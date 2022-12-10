@@ -1,23 +1,24 @@
-function component() {
-    const element = document.createElement('div');
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min';
+import 'material-icons/iconfont/material-icons.css';
+import initApp from "./initiators/initApp";
+import initLoader from "./initiators/initLoader";
 
-    // Lodash, currently included via a script, is required for this line to work
-    element.innerHTML = Array(['Hello', 'webpack']).join() + "ss";
-
-    return element;
-}
-
-function initLoader(){
-    document.body.appendChild(component());
-}
-function initApp(){
-
-}
-
-document.addEventListener("readystatechange", function(){
-    if (this.readyState === "interactive") {
-        initLoader();
-    } else if (this.readyState === "complete") {
-        initApp();
+class app {
+    constructor(){
+        // hook listen
+        document.addEventListener("readystatechange", this.appBootstrap);
     }
-});
+    appBootstrap(this:Document, ev: Event){
+        if (this.readyState === "interactive") {
+            initLoader();
+        } else if (this.readyState === "complete") {
+            initApp();
+        }
+    }
+}
+
+// init app instance
+new app()
+
+

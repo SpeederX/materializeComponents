@@ -1,6 +1,6 @@
-interface IFbadgeCollection{
+interface IFmaterializeBadgeCollection{
     text: string,
     link: string,
-    count: string,
-    new: boolean,
+    count?: number,
+    new?: boolean,
 }

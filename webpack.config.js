@@ -9,12 +9,18 @@ module.exports = {
         compress: true,
         port: 4000,
     },
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts']
+    },
     module: {
         rules: [
             {
                 test: /\.ts?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
+            },{
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
             },
         ],
     },
